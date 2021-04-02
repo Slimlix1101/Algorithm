@@ -15,14 +15,19 @@ public class ImprovedThreeSum {
         }
         return -1;
     }
+
     public void FindAnswer(int[] ary) {
-        Arrays.sort(ary, 0, ary.length-1); // sort the array
-        for (int i = 0; i<ary.length-1; i++)
+
+        int count=0;
+        Arrays.sort(ary, 0, ary.length); // sort the array
+        for (int i = 0; i<ary.length; i++)
             for (int j = i+1; j<ary.length; j++)
             {
                 int result = BinarySearch(ary, -(ary[i]+ary[j]));
-                if (result != -1) System.out.println(String.format("%d %d %d",ary[i],ary[j], ary[result])); // possible answer
+                if (result != -1 && ary[i] < ary[j] && ary[j] < ary[result]) count++; // possible answer, double counting avoided
+
             }
+        System.out.println(count);
     }
 
 }
