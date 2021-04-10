@@ -5,10 +5,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class TestForStack extends LinkedStackOfStrings {
+public class TestForStack extends ArrayStackOfStrings {
+    public TestForStack(int capacity) {
+        super(capacity);
+    }
+
     public static void main(String[] args) {
         try {
-            LinkedStackOfStrings stack = new LinkedStackOfStrings();
+            ArrayStackOfStrings stack = new ArrayStackOfStrings(10);
             String content = new String(Files.readAllBytes(Paths.get("C:\\Users\\User\\Desktop\\StackTest\\article1.txt")));
             String[] words = content.split(" "); // spilt the content of file
             for (String word : words)
